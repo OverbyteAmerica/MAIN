@@ -1,1 +1,419 @@
-# MAIN
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f6f2">
+<title>Katt Slade | Cyber Defense & Resilience</title>
+<meta name="description" content="Creative technology, cybersecurity, and community resilience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,400;6..144,500;6..144,600;6..144,700&family=Rubik+80s+Fade&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f8f6f2;
+  --ink: #171717;
+  --muted: #65615e;
+  --line: rgba(23,23,23,.15);
+  --sans: "Google Sans Flex", Arial, sans-serif;
+  --display: "Rubik 80s Fade", Impact, sans-serif;
+}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--sans);
+  background:
+    radial-gradient(ellipse at 8% 8%, #dfd0f5 0, transparent 32rem),
+    radial-gradient(ellipse at 95% 25%, #f5ddd0 0, transparent 29rem),
+    radial-gradient(ellipse at 65% 90%, #d9eae0 0, transparent 34rem),
+    var(--paper);
+  overflow-x: hidden;
+}
+
+/* Subtle monochrome grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: .13;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.page {
+  width: min(1120px, calc(100% - 48px));
+  margin: auto;
+  padding: 38px 0 28px;
+}
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.status { display: flex; align-items: center; gap: 9px; }
+.status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #47856a;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #47856a20;
+}
+.top-right { color: var(--muted); text-align: right; }
+
+.hero { padding: clamp(65px, 10vw, 112px) 0 50px; }
+
+.eyebrow {
+  margin: 0 0 22px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.eyebrow span {
+  display: inline-block;
+  padding: 8px 11px;
+  border: 1px solid #17171755;
+  border-radius: 4px;
+  background: #ffffff45;
+}
+
+h1 {
+  margin: 0 0 27px;
+  font-family: var(--display);
+  font-size: clamp(60px, 12.5vw, 144px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.04em;
+  overflow-wrap: anywhere;
+}
+
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 1.2fr .65fr;
+  gap: 48px;
+  align-items: end;
+}
+.intro {
+  max-width: 650px;
+  margin: 0;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.55;
+  letter-spacing: -.025em;
+}
+.intro strong { font-weight: 700; }
+
+.side-note {
+  max-width: 300px;
+  padding-left: 18px;
+  border-left: 2px solid var(--ink);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.side-note b {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--ink);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin: 12px 0 18px;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.section-head p { margin: 0; color: var(--muted); font-size: 12px; }
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.link-card {
+  --wash: #ffffff90;
+  --orb: #d9c8f4;
+  min-height: 175px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 23px 24px 20px;
+  border: 1px solid #17171725;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--wash), #ffffff80);
+  box-shadow: 0 7px 22px #1c182308;
+  text-decoration: none;
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.link-card::before {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  top: -100px;
+  right: -65px;
+  border-radius: 50%;
+  background: var(--orb);
+  opacity: .65;
+  transition: transform .3s ease;
+}
+.link-card::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 18px;
+  bottom: 14px;
+  opacity: .2;
+  pointer-events: none;
+  background-image: radial-gradient(#171717 .7px, transparent .8px);
+  background-size: 5px 5px;
+  mask-image: linear-gradient(135deg, transparent, black);
+}
+.link-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 32px #1c182315;
+}
+.link-card:hover::before { transform: scale(1.16); }
+.link-card:focus-visible {
+  outline: 3px solid #5d4385;
+  outline-offset: 4px;
+}
+
+.lab { --wash: #eee5fac0; --orb: #c8a8ef; }
+.linkedin { --wash: #ffffffa8; --orb: #d8d5f4; }
+.arcade { --wash: #fae5dac0; --orb: #f0b99d; }
+.resume { --wash: #deefe6c0; --orb: #a9d7c1; }
+
+.card-top, .card-bottom {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.card-index {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+}
+.card-symbol { font-size: 18px; }
+
+.link-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 23px 0 6px;
+  font-family: var(--sans);
+  font-size: clamp(21px, 2.5vw, 28px);
+  font-weight: 600;
+  letter-spacing: -.04em;
+}
+.link-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 340px;
+  margin: 0;
+  color: #55514f;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.arrow {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  border: 1px solid #17171730;
+  border-radius: 50%;
+  background: #ffffff85;
+  font-size: 18px;
+  transition: transform .2s ease;
+}
+.link-card:hover .arrow { transform: translate(2px, -2px); }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  padding-top: 19px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+footer strong { color: var(--ink); }
+.crosshair::before { content: "✳ "; color: var(--ink); }
+
+@media (max-width: 650px) {
+  .page { width: calc(100% - 32px); padding-top: 22px; }
+  .topline { font-size: 9px; letter-spacing: .08em; }
+  .hero { padding-top: 65px; }
+  h1 { font-size: clamp(56px, 15vw, 90px); }
+  .hero-bottom { grid-template-columns: 1fr; gap: 24px; }
+  .side-note { max-width: 100%; }
+  .links { grid-template-columns: 1fr; gap: 11px; }
+  .link-card { min-height: 150px; padding: 20px; }
+  .section-head { align-items: start; flex-direction: column; gap: 7px; }
+  footer { flex-direction: column; gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+
+  <header class="topline">
+    <div class="status">Independent defender</div>
+    <div class="top-right">Cybersecurity · Response · Resilience</div>
+  </header>
+
+  <section class="hero" aria-labelledby="name">
+    <p class="eyebrow">
+      <span>Threat-minded. Human-focused. Built to respond.</span>
+    </p>
+
+    <h1 id="name">Katt Slade</h1>
+
+    <div class="hero-bottom">
+      <p class="intro">
+        I bring <strong>creative technology and cybersecurity</strong>
+        together to help protect people, systems, and the communities
+        that depend on them—from digital threats to real-world disruption.
+      </p>
+
+      <aside class="side-note">
+        <b>My operating principle</b>
+        Defend what matters. Make complex systems clearer. Help people
+        recover and move forward.
+      </aside>
+    </div>
+  </section>
+
+  <section aria-labelledby="destinations">
+    <div class="section-head">
+      <h2 id="destinations">Choose your entry point</h2>
+      <p>Four ways into my work.</p>
+    </div>
+
+    <nav class="links" aria-label="Portfolio links">
+
+      <a class="link-card lab"
+         href="https://github.com/overbyteamerica"
+         target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="card-index">01 / INVESTIGATE</span>
+          <span class="card-symbol" aria-hidden="true">⌘</span>
+        </div>
+        <div>
+          <h3>Lab Portfolio</h3>
+          <p>Security notes, hands-on learning, and defensive thinking.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-index">Cybersecurity</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </div>
+      </a>
+
+      <a class="link-card linkedin"
+         href="https://www.linkedin.com/in/kattslade"
+         target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="card-index">02 / CONNECT</span>
+          <span class="card-symbol" aria-hidden="true">↗</span>
+        </div>
+        <div>
+          <h3>LinkedIn</h3>
+          <p>Professional background, current direction, and collaboration.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-index">Professional profile</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </div>
+      </a>
+
+      <a class="link-card arcade"
+         href="https://overbyteamerica.github.io/Cryptid-Arcad3/"
+         target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="card-index">03 / EXPLORE</span>
+          <span class="card-symbol" aria-hidden="true">✳</span>
+        </div>
+        <div>
+          <h3>Cryptid Arcade</h3>
+          <p>Playful missions, cyber learning, and creative experiments.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-index">Learn by playing</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </div>
+      </a>
+
+      <a class="link-card resume"
+         href="KATT SLADE - newest resume.pdf"
+         target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="card-index">04 / REVIEW</span>
+          <span class="card-symbol" aria-hidden="true">↗</span>
+        </div>
+        <div>
+          <h3>Resume</h3>
+          <p>Experience across creative work, technology, and security.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-index">PDF · Career snapshot</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </div>
+      </a>
+
+    </nav>
+  </section>
+
+  <footer>
+    <span><strong>Katt Slade</strong> · 2026</span>
+    <span class="crosshair">Cyber defense × community resilience</span>
+    <span>Creative edge. Defender mindset.</span>
+  </footer>
+
+</main>
+</body>
+</html>
